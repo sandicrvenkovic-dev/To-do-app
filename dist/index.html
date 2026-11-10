@@ -1,7 +1,170 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8f7f4"><title>Daybook — Make room for what matters</title><link rel="stylesheet" href="styles.css"></head>
-<body>
-<aside class="sidebar"><a class="brand" href="./"><span class="brand-icon">d.</span> daybook</a><div class="workspace"><span class="avatar">Y</span><div>Your workspace<small>A little more organized.</small></div></div><button class="nav active" id="all-tasks">▤ <span>All tasks</span><b id="all-count">0</b></button><div class="section-label">MY PROJECTS <button id="add-project" aria-label="Add project">+</button></div><nav id="projects" aria-label="Projects"></nav><div class="sidebar-bottom"><span class="tiny-sun">✳</span><p>Small steps.<br>Meaningful progress.</p><small>One task at a time.</small></div><div class="local-status">◉ Saved on this device</div></aside>
-<main><header><span>YOUR PERSONAL HEADSPACE</span><span id="today"></span></header><section class="page"><div class="heading"><div><div class="eyebrow">LET’S MAKE SOME ROOM</div><h1 id="page-title">All tasks<span>.</span></h1><p id="subtitle">A clear mind starts with a little clarity.</p></div><button class="primary" id="new-task"><span>+</span> Add task</button></div><div class="overview"><div><span class="stat-icon">▤</span><strong id="total">0</strong><span>Total tasks</span></div><div><span class="stat-icon green">✓</span><strong id="done">0</strong><span>Completed</span></div><div><span class="stat-icon orange">◷</span><strong id="remaining">0</strong><span>To go</span></div><div class="progress-stat"><div><span>Your progress</span><strong id="percent">0%</strong></div><progress id="progress" max="100" value="0"></progress></div></div><div class="toolbar"><div class="tabs" role="group" aria-label="Filter tasks"><button class="selected" data-filter="all">All tasks</button><button data-filter="active">Active</button><button data-filter="completed">Completed</button></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search tasks…" aria-label="Search tasks"></label><select id="sort" aria-label="Sort tasks"><option value="created">Recently added</option><option value="date">Due date</option><option value="priority">Priority</option></select></div><div class="list-heading"><span>TASK</span><span>DUE DATE</span><span>PRIORITY</span></div><div id="tasks"></div><button class="quick-add" id="quick-add">+ <span>Add a new task</span></button><footer><span>✧</span> You don’t have to do it all. Just the next right thing.</footer></section></main>
-<dialog id="task-dialog"><form id="task-form"><div class="dialog-heading"><div><div class="eyebrow">A LITTLE CLARITY</div><h2 id="dialog-title">New task</h2></div><button type="button" class="close" aria-label="Close" data-close>×</button></div><label>Title<input name="title" required maxlength="160" placeholder="What’s on your mind?"></label><label>Description<textarea name="description" rows="3" placeholder="Add a little context…"></textarea></label><div class="form-row"><label>Due date<input name="dueDate" type="date"></label><label>Priority<select name="priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label></div><label>Project<select name="projectId" id="task-project"></select></label><label>Notes<textarea name="notes" rows="2" placeholder="Anything else to remember"></textarea></label><div class="dialog-actions"><button type="button" id="delete-task" class="danger">Delete task</button><button type="button" data-close>Cancel</button><button type="submit" class="primary">Save task</button></div></form></dialog>
-<dialog id="project-dialog"><form id="project-form"><div class="dialog-heading"><h2>New project</h2><button type="button" class="close" data-close aria-label="Close">×</button></div><label>Project name<input name="name" placeholder="A space for your next idea" required maxlength="60"></label><div class="dialog-actions"><button type="button" data-close>Cancel</button><button class="primary">Create project</button></div></form></dialog><div id="notice" role="status"></div><script type="module" src="app.js"></script></body></html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f7f4" />
+    <title>Daybook — Make room for what matters</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="brand" href="./"><span class="brand-icon">d.</span> daybook</a>
+      <div class="workspace">
+        <span class="avatar">Y</span>
+        <div>Your workspace<small>A little more organized.</small></div>
+      </div>
+      <button class="nav active" id="all-tasks">
+        ▤ <span>All tasks</span><b id="all-count">0</b>
+      </button>
+      <div class="section-label">
+        MY PROJECTS <button id="add-project" aria-label="Add project">+</button>
+      </div>
+      <nav id="projects" aria-label="Projects"></nav>
+      <div class="sidebar-bottom">
+        <span class="tiny-sun">✳</span>
+        <p>Small steps.<br />Meaningful progress.</p>
+        <small>One task at a time.</small>
+      </div>
+      <div class="local-status">◉ Saved on this device</div>
+    </aside>
+    <main>
+      <header>
+        <span>YOUR PERSONAL HEADSPACE</span><span id="today"></span>
+      </header>
+      <section class="page">
+        <div class="heading">
+          <div>
+            <div class="eyebrow">LET’S MAKE SOME ROOM</div>
+            <h1 id="page-title">All tasks<span>.</span></h1>
+            <p id="subtitle">A clear mind starts with a little clarity.</p>
+          </div>
+          <button class="primary" id="new-task"><span>+</span> Add task</button>
+        </div>
+        <div class="overview">
+          <div>
+            <span class="stat-icon">▤</span><strong id="total">0</strong
+            ><span>Total tasks</span>
+          </div>
+          <div>
+            <span class="stat-icon green">✓</span><strong id="done">0</strong
+            ><span>Completed</span>
+          </div>
+          <div>
+            <span class="stat-icon orange">◷</span
+            ><strong id="remaining">0</strong><span>To go</span>
+          </div>
+          <div class="progress-stat">
+            <div>
+              <span>Your progress</span><strong id="percent">0%</strong>
+            </div>
+            <progress id="progress" max="100" value="0"></progress>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="tabs" role="group" aria-label="Filter tasks">
+            <button class="selected" data-filter="all">All tasks</button
+            ><button data-filter="active">Active</button
+            ><button data-filter="completed">Completed</button>
+          </div>
+          <label class="search"
+            ><span>⌕</span
+            ><input
+              id="search"
+              type="search"
+              placeholder="Search tasks…"
+              aria-label="Search tasks" /></label
+          ><select id="sort" aria-label="Sort tasks">
+            <option value="created">Recently added</option>
+            <option value="date">Due date</option>
+            <option value="priority">Priority</option>
+          </select>
+        </div>
+        <div class="list-heading">
+          <span>TASK</span><span>DUE DATE</span><span>PRIORITY</span>
+        </div>
+        <div id="tasks"></div>
+        <button class="quick-add" id="quick-add">
+          + <span>Add a new task</span>
+        </button>
+        <footer>
+          <span>✧</span> You don’t have to do it all. Just the next right thing.
+        </footer>
+      </section>
+    </main>
+    <dialog id="task-dialog">
+      <form id="task-form">
+        <div class="dialog-heading">
+          <div>
+            <div class="eyebrow">A LITTLE CLARITY</div>
+            <h2 id="dialog-title">New task</h2>
+          </div>
+          <button type="button" class="close" aria-label="Close" data-close>
+            ×
+          </button>
+        </div>
+        <label
+          >Title<input
+            name="title"
+            required
+            maxlength="160"
+            placeholder="What’s on your mind?" /></label
+        ><label
+          >Description<textarea
+            name="description"
+            rows="3"
+            placeholder="Add a little context…"
+          ></textarea>
+        </label>
+        <div class="form-row">
+          <label>Due date<input name="dueDate" type="date" /></label
+          ><label
+            >Priority<select name="priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select></label
+          >
+        </div>
+        <label
+          >Project<select name="projectId" id="task-project"></select></label
+        ><label
+          >Notes<textarea
+            name="notes"
+            rows="2"
+            placeholder="Anything else to remember"
+          ></textarea>
+        </label>
+        <div class="dialog-actions">
+          <button type="button" id="delete-task" class="danger">
+            Delete task</button
+          ><button type="button" data-close>Cancel</button
+          ><button type="submit" class="primary">Save task</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="project-dialog">
+      <form id="project-form">
+        <div class="dialog-heading">
+          <h2>New project</h2>
+          <button type="button" class="close" data-close aria-label="Close">
+            ×
+          </button>
+        </div>
+        <label
+          >Project name<input
+            name="name"
+            placeholder="A space for your next idea"
+            required
+            maxlength="60"
+        /></label>
+        <div class="dialog-actions">
+          <button type="button" data-close>Cancel</button
+          ><button class="primary">Create project</button>
+        </div>
+      </form>
+    </dialog>
+    <div id="notice" role="status"></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
