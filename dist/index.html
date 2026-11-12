@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f8f7f4" />
-    <title>Daybook — Make room for what matters</title>
+    <meta name="theme-color" content="#ffffff" />
+    <title>Daybook — Tasks & projects</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -12,7 +12,7 @@
       <a class="brand" href="./"><span class="brand-icon">d.</span> daybook</a>
       <div class="workspace">
         <span class="avatar">Y</span>
-        <div>Your workspace<small>A little more organized.</small></div>
+        <div>Your workspace<small>Personal workspace</small></div>
       </div>
       <button class="nav active" id="all-tasks">
         ▤ <span>All tasks</span><b id="all-count">0</b>
@@ -23,21 +23,21 @@
       <nav id="projects" aria-label="Projects"></nav>
       <div class="sidebar-bottom">
         <span class="tiny-sun">✳</span>
-        <p>Small steps.<br />Meaningful progress.</p>
-        <small>One task at a time.</small>
+        <p>Plan. Execute.<br />Repeat.</p>
+        <small>Tasks & projects</small>
       </div>
       <div class="local-status">◉ Saved on this device</div>
     </aside>
     <main>
       <header>
-        <span>YOUR PERSONAL HEADSPACE</span><span id="today"></span>
+        <span>WORKSPACE / DAYBOOK</span><span id="today"></span>
       </header>
       <section class="page">
         <div class="heading">
           <div>
-            <div class="eyebrow">LET’S MAKE SOME ROOM</div>
+            <div class="eyebrow">TASK OVERVIEW</div>
             <h1 id="page-title">All tasks<span>.</span></h1>
-            <p id="subtitle">A clear mind starts with a little clarity.</p>
+            <p id="subtitle">Manage your tasks. Track your progress.</p>
           </div>
           <button class="primary" id="new-task"><span>+</span> Add task</button>
         </div>
@@ -88,7 +88,7 @@
           + <span>Add a new task</span>
         </button>
         <footer>
-          <span>✧</span> You don’t have to do it all. Just the next right thing.
+          <span>✧</span> DAYBOOK / TASKS & PROJECTS
         </footer>
       </section>
     </main>
@@ -96,7 +96,7 @@
       <form id="task-form">
         <div class="dialog-heading">
           <div>
-            <div class="eyebrow">A LITTLE CLARITY</div>
+            <div class="eyebrow">TASK EDITOR</div>
             <h2 id="dialog-title">New task</h2>
           </div>
           <button type="button" class="close" aria-label="Close" data-close>
@@ -108,12 +108,12 @@
             name="title"
             required
             maxlength="160"
-            placeholder="What’s on your mind?" /></label
+            placeholder="Task title" /></label
         ><label
           >Description<textarea
             name="description"
             rows="3"
-            placeholder="Add a little context…"
+            placeholder="Add a description…"
           ></textarea>
         </label>
         <div class="form-row">
@@ -154,7 +154,7 @@
         <label
           >Project name<input
             name="name"
-            placeholder="A space for your next idea"
+            placeholder="Project name"
             required
             maxlength="60"
         /></label>
