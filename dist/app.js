@@ -92,11 +92,78 @@ function render() {
   $("#tasks").innerHTML = visible.length
     ? visible
         .map(
-          (t) =>
-            `<article class="task ${t.completed ? "is-complete" : ""}"><input class="task-check" type="checkbox" ${t.completed ? "checked" : ""} aria-label="Mark ${escape(t.title)} ${t.completed ? "incomplete" : "complete"}" data-toggle="${escape(t.id)}" data-parent="${escape(t.project.id)}"><button class="task-name" data-edit="${escape(t.id)}" data-parent="${escape(t.project.id)}"><strong>${escape(t.title)}</strong><small><span class="project-dot"></span>${escape(t.project.name)}${t.description ? ' <span class="separator">/</span> ' + escape(t.description.slice(0, 65)) : ""}</small></button><span class="task-date ${!t.completed && t.dueDate && t.dueDate < todayKey() ? "overdue" : ""}">${t.dueDate === todayKey() ? "Today" : dateLabel(t.dueDate)}</span><span class="priority ${t.priority}"><i></i>${t.priority}</span><button class="more" aria-label="Edit ${escape(t.title)}" data-edit="${escape(t.id)}" data-parent="${escape(t.project.id)}">⋯</button></article>`,
+          (t) => `
+            <article class="task ${t.completed ? "is-complete" : ""}">
+              <input
+                class="task-check"
+                type="checkbox"
+                ${t.completed ? "checked" : ""}
+                aria-label="Mark ${escape(t.title)} ${t.completed ? "incomplete" : "complete"}"
+                data-toggle="${escape(t.id)}"
+                data-parent="${escape(t.project.id)}"
+              >
+
+              <button
+                class="task-name"
+                data-edit="${escape(t.id)}"
+                data-parent="${escape(t.project.id)}"
+              >
+                <strong>${escape(t.title)}</strong>
+                <small>
+                  <span class="project-dot"></span>${escape(t.project.name)}${
+                    t.description
+                      ? ' <span class="separator">/</span> ' +
+                        escape(t.description.slice(0, 65))
+                      : ""
+                  }
+                </small>
+              </button>
+
+              <span class="task-date ${
+                !t.completed && t.dueDate && t.dueDate < todayKey()
+                  ? "overdue"
+                  : ""
+              }">
+                ${t.dueDate === todayKey() ? "Today" : dateLabel(t.dueDate)}
+              </span>
+
+              <span class="priority ${t.priority}">
+                <i></i>${t.priority}
+              </span>
+
+              <button
+                class="more"
+                aria-label="Edit ${escape(t.title)}"
+                data-edit="${escape(t.id)}"
+                data-parent="${escape(t.project.id)}"
+              >
+                ⋯
+              </button>
+            </article>
+          `,
         )
         .join("")
-    : `<div class="empty"><div class="empty-icon">${filter === "completed" ? "✓" : "+"}</div><h2>${$("#search").value ? "No matching tasks" : filter === "completed" ? "No completed tasks" : filter === "active" && scoped.length ? "All tasks complete" : "No tasks yet"}</h2><p>${$("#search").value ? "Try a different search or filter." : filter === "completed" ? "Your completed tasks will appear here." : "Create a task to get started."}</p></div>`;
+    : `
+        <div class="empty">
+          <div class="empty-icon">${filter === "completed" ? "✓" : "+"}</div>
+          <h2>${
+            $("#search").value
+              ? "No matching tasks"
+              : filter === "completed"
+                ? "No completed tasks"
+                : filter === "active" && scoped.length
+                  ? "All tasks complete"
+                  : "No tasks yet"
+          }</h2>
+          <p>${
+            $("#search").value
+              ? "Try a different search or filter."
+              : filter === "completed"
+                ? "Your completed tasks will appear here."
+                : "Create a task to get started."
+          }</p>
+        </div>
+      `;
   document
     .querySelectorAll("[data-filter]")
     .forEach((b) =>
