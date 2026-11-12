@@ -537,7 +537,6 @@ progress::-moz-progress-bar {
   display: grid;
   place-items: center;
   font-size: 30px;
-  
 }
 .empty h2 {
   font-family: Arial, Helvetica, sans-serif;
@@ -575,7 +574,6 @@ dialog {
 }
 dialog::backdrop {
   background: #11111150;
-  
 }
 .dialog-heading {
   display: flex;
@@ -855,66 +853,267 @@ textarea {
 }
 
 /* Monochrome surfaces and precise interaction states. */
-:root { color-scheme: light; background: #fff; color: #111; --accent: #111; --muted: #666; --line: #d4d4d4; }
-.sidebar { background: #fafafa; border-color: #ccc; }
-.brand { letter-spacing: -1.5px; }
-.brand-icon, .primary { background: #111; color: #fff; }
-.avatar { background: #fff; color: #111; border-color: #aaa; }
-.nav { color: #555; }
-.nav:hover { background: #e8e8e8; color: #111; }
-.nav.active { background: #111; color: #fff; }
-.nav.active .project-dot { background: #fff; }
-.nav b { opacity: 1; font-variant-numeric: tabular-nums; }
-.project-dot, .dot-1, .dot-2, .dot-3 { background: #666; }
-.sidebar-bottom { border-top: 1px solid #ccc; padding-top: 18px; }
-.sidebar-bottom p { font-size: 13px; font-weight: 700; line-height: 1.4; letter-spacing: 0; text-transform: uppercase; }
-header { height: 72px; color: #555; }
-h1 { font-weight: 700; letter-spacing: -2px; }
-h1 span { color: #111; }
-.primary { border: 1px solid #111; font-weight: 600; }
-.primary:hover { background: #fff; color: #111; }
-.overview { background: #fff; border: 1px solid #111; padding-top: 20px; padding-bottom: 20px; }
-.stat-icon, .stat-icon.green, .stat-icon.orange { background: #f2f2f2; color: #111; border: 1px solid #ddd; }
-.overview strong { font-variant-numeric: tabular-nums; }
-.progress-stat strong { color: #111; }
-progress { height: 4px; background: #ddd; }
-progress::-webkit-progress-bar { background: #ddd; }
-progress::-webkit-progress-value { background: #111; }
-progress::-moz-progress-bar { background: #111; }
-.tabs { background: #fff; padding: 0; gap: 0; border: 1px solid #ccc; }
-.tabs button { padding: 9px 13px; color: #555; }
-.tabs button + button { border-left: 1px solid #ccc; }
-.tabs button.selected { background: #111; color: #fff; }
-.search input, #sort { font-size: 11px; color: #444; }
-.list-heading { color: #555; font-weight: 700; }
-.task { padding-top: 18px; padding-bottom: 18px; }
-.task:hover { background: #fafafa; }
-.task-check { border-color: #888; }
-.task-check:checked { background: #111; border-color: #111; }
-.task-name strong { font-size: 14px; font-weight: 600; }
-.task-name small { color: #666; }
-.task-date { color: #555; font-variant-numeric: tabular-nums; }
-.task-date.overdue { color: #111; text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
-.priority { font-size: 10px; font-weight: 600; border: 1px solid #ccc; }
-.high { background: #111; color: #fff; border-color: #111; }
-.medium { background: #e8e8e8; color: #222; border-color: #ccc; }
-.low { background: #fff; color: #555; border-color: #ccc; }
-.is-complete .priority { opacity: 1; }
-.quick-add, .quick-add span { color: #444; }
-.quick-add:hover, .quick-add:hover span { color: #000; }
-.empty-icon { color: #111; border-color: #111; background: #fff; font-size: 24px; }
-.empty p { color: #666; }
-footer { border-top: 1px solid #ddd; padding-top: 16px; text-align: left; color: #666; letter-spacing: 1px; text-transform: uppercase; }
-footer span, .tiny-sun { display: none; }
-dialog { background: #fff; color: #111; border: 1px solid #111; }
-dialog::backdrop { background: #0006; }
-form > label, .form-row > label { color: #444; font-weight: 600; }
-form input, form textarea, form select { border-color: #aaa; color: #111; font-weight: 400; }
-.danger { color: #111; text-decoration: underline; text-underline-offset: 3px; }
-#notice { background: #111; color: #fff; border: 1px solid #fff; }
+:root {
+  color-scheme: light;
+  background: #fff;
+  color: #111;
+  --accent: #111;
+  --muted: #666;
+  --line: #d4d4d4;
+}
+.sidebar {
+  background: #fafafa;
+  border-color: #ccc;
+}
+.brand {
+  letter-spacing: -1.5px;
+}
+.brand-icon,
+.primary {
+  background: #111;
+  color: #fff;
+}
+.avatar {
+  background: #fff;
+  color: #111;
+  border-color: #aaa;
+}
+.nav {
+  color: #555;
+}
+.nav:hover {
+  background: #e8e8e8;
+  color: #111;
+}
+.nav.active {
+  background: #111;
+  color: #fff;
+}
+.nav.active .project-dot {
+  background: #fff;
+}
+.nav b {
+  opacity: 1;
+  font-variant-numeric: tabular-nums;
+}
+.project-dot,
+.dot-1,
+.dot-2,
+.dot-3 {
+  background: #666;
+}
+.sidebar-bottom {
+  border-top: 1px solid #ccc;
+  padding-top: 18px;
+}
+.sidebar-bottom p {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+header {
+  height: 72px;
+  color: #555;
+}
+h1 {
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+h1 span {
+  color: #111;
+}
+.primary {
+  border: 1px solid #111;
+  font-weight: 600;
+}
+.primary:hover {
+  background: #fff;
+  color: #111;
+}
+.overview {
+  background: #fff;
+  border: 1px solid #111;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.stat-icon,
+.stat-icon.green,
+.stat-icon.orange {
+  background: #f2f2f2;
+  color: #111;
+  border: 1px solid #ddd;
+}
+.overview strong {
+  font-variant-numeric: tabular-nums;
+}
+.progress-stat strong {
+  color: #111;
+}
+progress {
+  height: 4px;
+  background: #ddd;
+}
+progress::-webkit-progress-bar {
+  background: #ddd;
+}
+progress::-webkit-progress-value {
+  background: #111;
+}
+progress::-moz-progress-bar {
+  background: #111;
+}
+.tabs {
+  background: #fff;
+  padding: 0;
+  gap: 0;
+  border: 1px solid #ccc;
+}
+.tabs button {
+  padding: 9px 13px;
+  color: #555;
+}
+.tabs button + button {
+  border-left: 1px solid #ccc;
+}
+.tabs button.selected {
+  background: #111;
+  color: #fff;
+}
+.search input,
+#sort {
+  font-size: 11px;
+  color: #444;
+}
+.list-heading {
+  color: #555;
+  font-weight: 700;
+}
+.task {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.task:hover {
+  background: #fafafa;
+}
+.task-check {
+  border-color: #888;
+}
+.task-check:checked {
+  background: #111;
+  border-color: #111;
+}
+.task-name strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+.task-name small {
+  color: #666;
+}
+.task-date {
+  color: #555;
+  font-variant-numeric: tabular-nums;
+}
+.task-date.overdue {
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 700;
+}
+.priority {
+  font-size: 10px;
+  font-weight: 600;
+  border: 1px solid #ccc;
+}
+.high {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+.medium {
+  background: #e8e8e8;
+  color: #222;
+  border-color: #ccc;
+}
+.low {
+  background: #fff;
+  color: #555;
+  border-color: #ccc;
+}
+.is-complete .priority {
+  opacity: 1;
+}
+.quick-add,
+.quick-add span {
+  color: #444;
+}
+.quick-add:hover,
+.quick-add:hover span {
+  color: #000;
+}
+.empty-icon {
+  color: #111;
+  border-color: #111;
+  background: #fff;
+  font-size: 24px;
+}
+.empty p {
+  color: #666;
+}
+footer {
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+  text-align: left;
+  color: #666;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+footer span,
+.tiny-sun {
+  display: none;
+}
+dialog {
+  background: #fff;
+  color: #111;
+  border: 1px solid #111;
+}
+dialog::backdrop {
+  background: #0006;
+}
+form > label,
+.form-row > label {
+  color: #444;
+  font-weight: 600;
+}
+form input,
+form textarea,
+form select {
+  border-color: #aaa;
+  color: #111;
+  font-weight: 400;
+}
+.danger {
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#notice {
+  background: #111;
+  color: #fff;
+  border: 1px solid #fff;
+}
 @media (max-width: 780px) {
-  header { height: 54px; }
-  .task-name strong { font-size: 13px; }
-  .tabs button { padding: 9px 11px; }
-  .overview { gap: 16px; }
+  header {
+    height: 54px;
+  }
+  .task-name strong {
+    font-size: 13px;
+  }
+  .tabs button {
+    padding: 9px 11px;
+  }
+  .overview {
+    gap: 16px;
+  }
 }
